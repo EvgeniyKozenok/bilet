@@ -48,6 +48,7 @@ class Reservator
      */
     public function reserveRandomTicket() {
         $this->createTicket();
+        $this->orderId = $this->createId();
         $this->createOrder();
         $this->sendNotification();
     }
@@ -64,11 +65,16 @@ class Reservator
      * create order
      */
     protected function createOrder(){
-        $this->orderId = $this->createId();
-        echo $this->getApiData();
-        echo $this->getMessagePrefix() . "orderId #$this->orderId created\n";
+        echo $this->getOrderMessage();
     }
 
+    /**
+     * order data
+     * @return string
+     */
+    protected function getOrderMessage() {
+        return $this->getMessagePrefix() . "orderId #$this->orderId created\n";
+    }
     /**
      * send notification
      */
@@ -90,14 +96,6 @@ class Reservator
      */
     protected function getMessagePrefix(){
         return "[$this->prefix] | ";
-    }
-
-    /**
-     * get data from api server
-     * @return string
-     */
-    protected function getApiData() {
-        return '';
     }
 
 }

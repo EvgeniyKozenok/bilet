@@ -21,11 +21,12 @@ class ReservatorApiPartner extends Reservator
      */
     protected $prefix = 'partnerApi';
 
-    /**
-     * @return bool|string
+    /***
+     * order create
      */
-    protected function getApiData() {
-        return $this->getMessagePrefix() . "reserving ticket #$this->ticketId VIA PARTNER API CALL\n";
+    protected function createOrder() {
+        echo $this->getMessagePrefix() . "reserving ticket #$this->ticketId VIA PARTNER API CALL\n";
+        echo $this->getOrderMessage();
     }
 
 }
